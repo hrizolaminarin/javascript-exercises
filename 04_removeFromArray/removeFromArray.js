@@ -1,15 +1,14 @@
 const removeFromArray = function() {
-    let array = arguments[0];
 
-    for (let i = 1; i < arguments.length; i++) {
-        if ( array.includes( arguments[i] ) ) {
-            array = array.filter( item => {
-                return item != arguments[i];
-            });
-        }
-    }
+    // argument is Array-like object so we create array from it
+    const args = Array.from(arguments);
 
-    return array;
+    // since we have array we can apply array function to it:
+    // shift() removes the first element from the array and returns that same element
+    // which is actually the array from which we want to remove item
+    const array = args.shift();
+    
+    return array.filter( item => !args.includes(item) );
 }
 
 // Do not edit below this line
