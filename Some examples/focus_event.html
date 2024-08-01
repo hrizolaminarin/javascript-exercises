@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Focus</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <p>Name: <input type="text" data-help="Your full name"></p>
+    <p>Age: <input type="text" data-help="Your age in years"></p>
+    <p id="help"></p>
+    
+    <script>
+      let help = document.querySelector("#help");
+      let fields = document.querySelectorAll("input");
+      for (let field of Array.from(fields)) {
+        /* Unlike the events discussed earlier, 'focus' and 'blur' events do 
+        not propagate. A handler on a parent element is not notified when 
+        a child element gains or loses focus.
+        Note: the window object will receive "focus" and "blur" events when the 
+        user moves from or to the browser tab or window in which the document is
+         shown.
+        */
+        field.addEventListener("focus", event => {
+          let text = event.target.getAttribute("data-help");
+          help.textContent = text;
+        });
+        field.addEventListener("blur", event => {
+          help.textContent = "";
+        });
+      }
+    </script>
+</body>
+</html>

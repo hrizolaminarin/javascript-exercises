@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A balloon app</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <span>🎈</span>
+    
+    <script>
+        const balloon = document.querySelector('span');
+
+        function resize (event){
+            
+            if (event.key != "ArrowUp" && event.key != "ArrowDown") return;
+
+            const size = parseFloat(
+                window.getComputedStyle(balloon).getPropertyValue('font-size'));
+
+            if (event.key == "ArrowUp") { 
+
+                if (size*1.1 >= 1000) {
+                    balloon.textContent = '💥';
+                    window.removeEventListener('keyup', resize);
+                } else {                    
+                    balloon.style.fontSize = `${size*1.1}px`;
+                }            
+                
+            }
+
+            if (event.key == "ArrowDown") {
+                balloon.style.fontSize = `${size*0.9}px`;
+            }
+        }
+
+        window.addEventListener('keydown', resize);        
+  
+    </script>
+    
+</body>
+</html>

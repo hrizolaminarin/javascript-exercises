@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse trail</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <style>
+        .trail { /* className for the trail elements */
+          position: absolute;
+          height: 6px; width: 6px;
+          border-radius: 3px;
+          background: teal;
+        }
+        body {
+          height: 300px;
+        }
+      </style>
+      
+      <script>
+        let trail;
+
+        function mouseTrail(e){
+          trail = document.createElement('div');
+          trail.className = 'trail';
+          trail.style.left = (event.pageX - 3) + "px";
+          trail.style.top = (event.pageY - 3) + "px";
+          document.body.appendChild(trail);  
+        }
+
+        let trails = [];
+        for (let i = 0; i <= 50; i++) {
+            trail = document.createElement('div');
+            trails.push(trail);
+            document.body.appendChild(trail);
+        }
+
+        let counter = 0;
+        function mouseTrailAnother(e){
+            if (counter == trails.length) counter=0;
+            trail = trails[counter];
+            trail.className = 'trail';
+            trail.style.left = (event.pageX -3) + "px";
+            trail.style.top = (event.pageY -3) + "px"; 
+            counter++;    
+      
+        }
+
+        document.body.addEventListener('mousemove', mouseTrailAnother);
+
+      </script>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display progress while scrolling</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body><style>
+    #progress {
+      border-bottom: 18px solid grey;
+      width: 0;
+      /*Giving an element a position of fixed acts much like an absolute 
+      position but also prevents it from scrolling along with the rest of the 
+      document. The effect is to make our progress bar stay at the top. 
+      */
+      position: fixed;
+      top: 0; left: 0;
+    }
+  </style>
+  <div id="progress"></div>
+  <script>
+    // Create some content
+    document.body.appendChild(document.createTextNode(
+      "supercalifragilisticexpialidocious ".repeat(1000)));
+  
+    let bar = document.querySelector("#progress");
+
+    window.addEventListener("scroll", () => {
+        /* The global innerHeight binding gives us the height of the window, 
+        which we must subtract from the total scrollable height—you can’t keep 
+        scrolling when you hit the bottom of the document. There’s also an 
+        innerWidth for the window width.  */
+      let max = document.body.scrollHeight - innerHeight;
+      console.log('document.body.scrollHeight ' + document.body.scrollHeight);
+      console.log('innerHeight ' + innerHeight);
+      // Progress bar's width is changed to indicate the current progress. We 
+      // use %, rather than px, as a unit when setting the width so that the 
+      // element is sized relative to the page width. By dividing pageYOffset, 
+      // the current scroll position, by the maximum scroll position and 
+      // multiplying by 100, we get the percentage for the progress bar.
+      bar.style.width = `${(pageYOffset / max) * 100}%`;
+      console.log('pageYOffset ' + pageYOffset);
+    });
+
+  </script>
+</body>
+</html>

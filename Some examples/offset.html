@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body{margin:0;}
+#blue{height:100px;width:100px;background-color:blue;border:10px solid gray; padding:25px;margin:25px;}
+#red{height:50px;width:50px;background-color:red;border:10px solid gray;}
+</style>
+</head>
+<body>
+
+<div id="blue"><div id="red"></div></div>
+
+<script>
+
+var redDiv = document.querySelector('#red');
+
+/* Using the properties offsetTop and offsetLeft we can get the offset pixel 
+value of an element node from the offsetParent. These element node properties 
+give us the distance in pixels from an elements outside top and left border to 
+the inside top and left border of the offsetParent. The value of the 
+offsetParent is determined by searching the nearest ancestor elements for an 
+element that has a CSS position value not equal to static. If none are found 
+then the <body> element or what some refer to as the "document" (as opposed to 
+    the browser viewport) is the offsetParent value. If during the ancestral 
+    search a <td>, <th>, or <table> element with a CSS position value of static 
+        is found then this becomes the value of offsetParent.
+If no position is specified static is default. In this case blue div is static
+so offsetParent is body!!!
+*/
+console.log(redDiv.offsetLeft);
+console.log(redDiv.offsetTop); 
+console.log(redDiv.offsetParent); //logs <body>
+
+// set a position to non-static ie.absolute for example
+const blueDiv = document.querySelector('#blue');
+blueDiv.style.position = 'absolute';
+
+console.log(redDiv.offsetLeft);
+console.log(redDiv.offsetTop); 
+console.log(redDiv.offsetParent); //logs blue div
+
+</script>
+</body>
+</html>

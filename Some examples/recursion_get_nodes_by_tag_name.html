@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <h1>Heading</h1>
+    <div style="background: orange; width: 360px; height: 20px">
+        <p>https://eloquentjavascript.net/14_dom.html</p>
+        <p>This page turns <span style="background: violet;">violet</span> when
+        you hold the V key.</p>
+        <p>Some programs work with direct user input, such as mouse and keyboard
+             actions. That kind of input isn’t available ahead of time, as a 
+             well-organized <span>data structure</span>—it comes in piece by piece, in real 
+             time, and the program must respond to it as it happens.</p>
+    </div>
+    
+    <script>
+     function byTagName(node, tagName) {
+
+        let nodes = [];
+
+        for (let child of node.children) {
+                    
+            if (child.nodeName.toLowerCase() === tagName ){ 
+                nodes.push(child);                                    
+            }
+
+            const res = byTagName(child, tagName);
+            res && nodes.push(...res);        
+        }
+        return nodes;    
+    }
+
+        console.log(byTagName(document.body, "h1").length);
+        // → 1
+        console.log(byTagName(document.body, "span").length);
+        // → 3
+        console.log(byTagName(document.body, "p").length);
+        
+    </script>
+</body>
+</html>
