@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A difference between textContent and innerText</title> 
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+    <div id="example">
+        Hello <span style="display: none;">world</span>!
+    </div>
+      
+    <script>
+        let element = document.getElementById("example");
+      
+        // displays even hidden text
+        console.log(element.textContent); // Output: Hello world!
+        // considers style so doesn't show hidden text
+        console.log(element.innerText); // Output: Hello !
+    </script>
+    
+</body>
+</html>
