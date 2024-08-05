@@ -25,7 +25,8 @@
 <div></div>
 
 <script>
-    let divEdges = document.querySelector('div').getBoundingClientRect();
+    const div = document.querySelector('div');
+    let divEdges = div.getBoundingClientRect();
 
     console.log(divEdges);
 
@@ -36,6 +37,11 @@
     //2*border + 2*padding + content
     console.log(divEdges.height, divEdges.width); //logs '120 120'
     //because 2*10px border + 2*25 + 50px content = 120
+
+    // same as divEdges.height and divEdges.width
+    console.log(div.offsetHeight, div.offsetWidth); //logs '120 120'
+    //because 2*10px border + 2*25 + 50px content = 120
+
 
     </script>
 </body>
