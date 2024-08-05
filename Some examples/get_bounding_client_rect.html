@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    body{
-        margin:0;
-    }
+    <meta charset="UTF-8">
+    <title>Get Bounding Client Rect</title> 
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <style>
+        body{
+            margin:0;
+        }
 
-    div{
-        height:50px;
-        width:50px;
-        background-color:red;
-        border:10px solid gray;
-        margin:100px;
-    }
-</style>
+        div{
+            height:50px;
+            width:50px;
+            background-color:red;
+            border:10px solid gray;
+            margin:100px;
+            padding:25px;
+        }
+    
+    </style>
 </head>
 <body>
 
 <div></div>
 
 <script>
+    let divEdges = document.querySelector('div').getBoundingClientRect();
 
-var divEdges = document.querySelector('div').getBoundingClientRect(); 
+    console.log(divEdges);
 
-console.log(divEdges);
+    console.log(divEdges.top, divEdges.right, divEdges.bottom, divEdges.left); //logs '100 220 220 100'
+    // right = bottom = margin + 2*border + 2*padding + content
+    // 100 + 2*10 + 2*25 + 50 = 220
 
-</script>
+    //2*border + 2*padding + content
+    console.log(divEdges.height, divEdges.width); //logs '120 120'
+    //because 2*10px border + 2*25 + 50px content = 120
+
+    </script>
 </body>
 </html>
