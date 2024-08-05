@@ -32,6 +32,9 @@ console.log(redDiv.offsetLeft);
 console.log(redDiv.offsetTop); 
 console.log(redDiv.offsetParent); //logs <body>
 
+let coords = redDiv.getBoundingClientRect();
+console.log(coords);
+
 // set a position to non-static ie.absolute for example
 const blueDiv = document.querySelector('#blue');
 blueDiv.style.position = 'absolute';
@@ -39,6 +42,9 @@ blueDiv.style.position = 'absolute';
 console.log(redDiv.offsetLeft);
 console.log(redDiv.offsetTop); 
 console.log(redDiv.offsetParent); //logs blue div
+
+coords = redDiv.getBoundingClientRect();
+console.log(coords);
 
 </script>
 </body>
