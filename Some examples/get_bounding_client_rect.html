@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    body{
+        margin:0;
+    }
+
+    div{
+        height:50px;
+        width:50px;
+        background-color:red;
+        border:10px solid gray;
+        margin:100px;
+    }
+</style>
+</head>
+<body>
+
+<div></div>
+
+<script>
+
+var divEdges = document.querySelector('div').getBoundingClientRect(); 
+
+console.log(divEdges);
+
+</script>
+</body>
+</html>
