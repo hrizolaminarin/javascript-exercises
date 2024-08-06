@@ -36,12 +36,15 @@
 
     //2*border + 2*padding + content
     console.log(divEdges.height, divEdges.width); //logs '120 120'
-    //because 2*10px border + 2*25 + 50px content = 120
+    //because 2*10px border + 2*25 padding + 50px content = 120
 
     // same as divEdges.height and divEdges.width
     console.log(div.offsetHeight, div.offsetWidth); //logs '120 120'
-    //because 2*10px border + 2*25 + 50px content = 120
+    //because 2*10px border + 2*25 padding + 50px content = 120
 
+    // client height and width = content + padding without border
+    console.log(div.clientHeight, div.clientWidth); //logs '100 100'
+    //because 2*25 padding + 50px content = 100
 
     </script>
 </body>
