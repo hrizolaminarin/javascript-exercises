@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{
+    height:50px;
+    width:50px;
+    background-color:red;
+    position:absolute;
+    top:50px;
+    left:50px;
+}
+/* div#top {
+    margin: 5px;
+    background-color: darkgoldenrod;
+} */
+</style>
+</head>
+<body>
+
+<div id="bottom"></div><div id="top"></div>
+
+<script>
+/* What is the topmost element 50 pixels from the top and left of the viewport?
+Since we have two <div>'s at that location the topmost (or if there is no z-index
+set the last one in document order) div is selected and returned. */
+console.log(document.elementFromPoint(50,50)); //logs <div id="top">
+
+</script>
+</body>
+</html>
