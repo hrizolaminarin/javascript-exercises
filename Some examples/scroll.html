@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        height: 100px;
+        width: 100px;
+        overflow: auto;
+      }
+      p {
+        height: 1000px;
+        width: 1000px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div><p></p></div>
+
+    <script>
+      var div = document.querySelector("div");
+
+      /* The scrollHeight and scrollWidth properties simply give you the height
+and width of the node being scrolled. For example, open any HTML document that
+scrolls in a web browser and access these properties on the <html> (e.g.
+document.documentElement.scrollWidth) or <body> (e.g. document.body.scrollWidth)
+and you will get the total size of the HTML document being scrolled. Since we can
+apply, using CSS (i.e overflow:scroll), to elements lets look at a simpler code
+example. In the code below I make a <div> scroll a <p> element that is 1000px's x
+1000px's. Accessing the scrollHeight and scrollWidth properties on the <div> will
+tell us that the element being scroll is 1000px's x 1000px's. */
+      console.log(div.scrollHeight, div.scrollWidth); //logs '1000 1000'
+    </script>
+  </body>
+</html>
