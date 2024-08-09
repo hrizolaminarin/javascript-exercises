@@ -34,6 +34,17 @@ example. In the code below I make a <div> scroll a <p> element that is 1000px's 
 1000px's. Accessing the scrollHeight and scrollWidth properties on the <div> will
 tell us that the element being scroll is 1000px's x 1000px's. */
       console.log(div.scrollHeight, div.scrollWidth); //logs '1000 1000'
+
+      console.log(div.scrollTop, div.scrollLeft);
+
+      /* We programatically scroll the <div> by setting the scrollTop and
+scrollLeft to 750. The 750 reports the number of pixels scroll and indicates 
+750 px's to the left and top are not viewable in the viewport. If it helps just 
+think of these properties as the pixel measurements of the content that is not 
+shown in the viewport to the left or top. */
+      div.scrollTop = 1000;
+      div.scrollLeft = 750;
+      console.log(div.scrollTop, div.scrollLeft);
     </script>
   </body>
 </html>
