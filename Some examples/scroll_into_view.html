@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <style>
+        div {
+          height: 30px;
+          width: 30px;
+          overflow: auto;
+        }
+        p {
+          background-color: red;
+        }
+      </style>
+    </head>
+    <body>
+      <div>
+        <content>
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+          <p>7</p>
+          <p>8</p>
+          <p>9</p>
+          <p>10</p>
+        </content>
+      </div>
+
+      <script>
+        //select <p>5</p> and scroll that element into view, I pass children '4'
+        //because its a zero index array-like structure
+        // By passing the scrollIntoView() method a parameter of true I am 
+        // telling the method to scroll to the top of the element being scrolled
+        // too. The true parameter is however not needed as this is the default 
+        // action performed by the method. If you want to scroll align to the 
+        // bottom of the element pass a parameter of false to the 
+        // scrollIntoView() method.
+        document.querySelector("content").children[4].scrollIntoView(true);
+      </script>
+    </body>
+  </html>
+</html>
