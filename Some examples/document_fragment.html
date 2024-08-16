@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <ul></ul>
+    <script>
+      var ulElm = document.querySelector('ul');
+      var docFrag = document.createDocumentFragment();
+
+      ["blue", "green", "red", "blue", "pink"].forEach(function (e) {
+        var li = document.createElement("li");
+        li.textContent = e;
+        docFrag.appendChild(li);
+      });
+
+      console.log(docFrag.textContent); //logs bluegreenredbluepink
+
+      //ocument fragments passed as arguments to inserting node methods will
+      //insert the entire child node structure ignoring the documentFragment node itself.
+      ulElm.appendChild(docFrag);
+      console.log(ulElm.innerHTML);
+
+      /*You might wonder what is the advantage to using a documentFragment over 
+      simply creating (via createElement()) a <div> in memory and working within 
+        this <div> to create a DOM structure. The follow are the differences.
+
+        - A document fragment may contain any kind of node (except <body> or
+        <html>)  where as an element may not
+        - The document fragment itself, is not added to the DOM when you append a fragment. 
+        The contents of the node are. As opposed to appending an element node in which 
+        the element itself is part of the appending.
+        - When a document fragment is appended to the DOM it transfers from the
+          document fragment to the place its appended. Its no longer in memory
+          in the place you created it. This is not true for element nodes that 
+          are temperately used to contained nodes briefly and then are moved to
+          the live DOM.*/
+          
+        
+    </script>
+  </body>
+</html>
