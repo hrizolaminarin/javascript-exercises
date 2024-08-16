@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Don't block, just start downloading and then parse the file when it's done downloading -->
+    <script>
+      var underscoreScript = document.createElement("script");
+      underscoreScript.src =
+        "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js";
+      document.body.appendChild(underscoreScript);
+    </script>
+
+    <!-- Don't block, just start downloading and then parse the file when it's done downloading -->
+    <script>
+      var jqueryScript = document.createElement("script");
+      jqueryScript.src =
+        "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js";
+      document.body.appendChild(jqueryScript);
+    </script>
+
+    <!-- Don't block, just start downloading and then parse the file when it's done downloading -->
+    <script>
+      var mouseWheelScript = document.createElement("script");
+      mouseWheelScript.src =
+        "http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js";
+      document.body.appendChild(mouseWheelScript);
+    </script>
+
+    <script>
+      //Only after everything is loaded can we safley conclude that jQuery was loaded and parsed
+      document.body.onload = function () {
+        console.log(jQuery().jquery);
+      };
+    </script>
+  </body>
+</html>
