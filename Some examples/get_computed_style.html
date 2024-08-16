@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      div {
+        background-color: red;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="background-color: green; border: 1px solid purple"></div>
+
+    <script>
+      var div = document.querySelector("div");
+      /*The style property only contains the css that is defined via the style
+attribute. 
+To get an elements css from the cascade (i.e. cascading from inline style sheets, 
+      external style sheets, browser style sheets) as well as its inline styles 
+      you can use getComputedStyle(). 
+This method provides a read-only CSSStyleDeclaration object similar to style. 
+      In the code example below I demonstrate the reading of cascading styles, 
+      not just element inline styles.
+
+      Make sure you note that getComputedStyle() method honors the CSS specificity hierarchy. 
+      For example in the code just shown the backgroundColor of the <div> is reported as green 
+        not red because inline styles are at the top of the specificity hierarchy 
+        thus its the inline backgroundColor value that is applied to the element 
+        by the browser and consider its final computed style.
+
+        No values can by set on a CSSStyleDeclaration object returned from getComputedStyles() its read only.
+
+The getComputedStyles() method returns color values in the rgb(#,#,#) format 
+regardless of how they were originally authored.
+
+Shorthand properties are not computed for the CSSStyleDeclaration object you 
+will have to use non-shorthand property names for property access 
+(e.g. marginTop not margin).
+      */
+
+      //logs rgb(0, 128, 0) or green, this is an inline element style
+      console.log(window.getComputedStyle(div).backgroundColor);
+
+      //logs 1px solid rgb(128, 0, 128) or 1px solid purple, this is an inline element style
+      console.log(window.getComputedStyle(div).border);
+
+      //logs 100px, note this is not an inline element style
+      console.log(window.getComputedStyle(div).height);
+
+      //logs 100px, note this is not an inline element style
+      console.log(window.getComputedStyle(div).width);
+    </script>
+  </body>
+</html>
