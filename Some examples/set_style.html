@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
   <body>
     <div></div>
 
@@ -7,25 +10,33 @@
       var div = document.querySelector("div");
       var divStyle = div.style;
 
+      // WRONG!!! This is not a way to set style!!! NOT WORKING !!!
+      divStyle =
+        "background-color:blue;border:1px solid black;height:100px;width:100px;";
+
+      console.log(divStyle);
+
       //set using cssText
-      divStyle.cssText =
-        "background-color:red;border:1px solid black;height:100px;width:100px;";
-      //get using cssText
+        divStyle.cssText =
+          "background-color:red;border:1px solid black;height:100px;width:100px;";
+        //get using cssText
+
       console.log(divStyle.cssText);
       //remove
-      divStyle.cssText = "";
+      // divStyle.cssText = "";
 
       //exactly that same outcome using setAttribute() and getAttribute()
 
       //set using setAttribute
-      div.setAttribute(
-        "style",
-        "background-color:red;border:1px solid black;height:100px;width:100px;"
-      );
+        div.setAttribute(
+          "style",
+          "background-color:purple;border:1px solid black;height:100px;width:100px;"
+        );
       //get using getAttribute
       console.log(div.getAttribute("style"));
+
       //remove
-      div.removeAttribute("style");
+      //div.removeAttribute("style");
     </script>
   </body>
 </html>
