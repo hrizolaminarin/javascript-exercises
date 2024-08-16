@@ -4,7 +4,7 @@
     <ul></ul>
     <div></div>
     <script>
-      var ulElm = document.querySelector('ul');
+      var ulElm = document.querySelector("ul");
       var docFrag = document.createDocumentFragment();
 
       ["blue", "green", "red", "blue", "pink"].forEach(function (e) {
@@ -18,6 +18,12 @@
       //ocument fragments passed as arguments to inserting node methods will
       //insert the entire child node structure ignoring the documentFragment node itself.
       ulElm.appendChild(docFrag);
+
+      //append cloned document fragment to ul in live DOM -instead of tranporting
+      // the <li>'s from the document fragment I clone the <li>'s, which keeps
+      //the <li>'s being clonded in memory inside of the documentFragment node.
+      // ulElm.appendChild(docFrag.cloneNode(true));
+
       console.log(ulElm.innerHTML);
 
       /*You might wonder what is the advantage to using a documentFragment over 
@@ -34,23 +40,25 @@
           in the place you created it. This is not true for element nodes that 
           are temperately used to contained nodes briefly and then are moved to
           the live DOM.*/
-        
-          //create a <div> and document fragment
-         var divElm = document.createElement('div');
-         var docFragDiv = document.createDocumentFragment();
 
-         //append div to document fragment
-         docFragDiv.appendChild(divElm);
+      //create a <div> and document fragment
+      var divElm = document.createElement("div");
+      var docFragDiv = document.createDocumentFragment();
 
-        //create a DOM structure from a string
-        docFragDiv.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+      //append div to document fragment
+      docFragDiv.appendChild(divElm);
 
-        //append, starting with the first child node contained inside of the <div>
-        document.querySelector('div').appendChild(docFragDiv.querySelector('div').firstChild);
+      //create a DOM structure from a string
+      docFragDiv.querySelector("div").innerHTML =
+        "<ul><li>foo</li><li>bar</li></ul>";
 
-        //logs <ul><li>foo</li><li>bar</li></ul>
-        console.log(document.querySelector('div').innerHTML);
-        
+      //append, starting with the first child node contained inside of the <div>
+      document
+        .querySelector("div")
+        .appendChild(docFragDiv.querySelector("div").firstChild);
+
+      //logs <ul><li>foo</li><li>bar</li></ul>
+      console.log(document.querySelector("div").innerHTML);
     </script>
   </body>
 </html>
