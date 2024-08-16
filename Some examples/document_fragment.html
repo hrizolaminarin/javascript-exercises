@@ -2,6 +2,7 @@
 <html lang="en">
   <body>
     <ul></ul>
+    <div></div>
     <script>
       var ulElm = document.querySelector('ul');
       var docFrag = document.createDocumentFragment();
@@ -33,7 +34,22 @@
           in the place you created it. This is not true for element nodes that 
           are temperately used to contained nodes briefly and then are moved to
           the live DOM.*/
-          
+        
+          //create a <div> and document fragment
+         var divElm = document.createElement('div');
+         var docFragDiv = document.createDocumentFragment();
+
+         //append div to document fragment
+         docFragDiv.appendChild(divElm);
+
+        //create a DOM structure from a string
+        docFragDiv.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+
+        //append, starting with the first child node contained inside of the <div>
+        document.querySelector('div').appendChild(docFragDiv.querySelector('div').firstChild);
+
+        //logs <ul><li>foo</li><li>bar</li></ul>
+        console.log(document.querySelector('div').innerHTML);
         
     </script>
   </body>
