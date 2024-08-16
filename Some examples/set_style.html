@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div></div>
+
+    <script>
+      var div = document.querySelector("div");
+      var divStyle = div.style;
+
+      //set using cssText
+      divStyle.cssText =
+        "background-color:red;border:1px solid black;height:100px;width:100px;";
+      //get using cssText
+      console.log(divStyle.cssText);
+      //remove
+      divStyle.cssText = "";
+
+      //exactly that same outcome using setAttribute() and getAttribute()
+
+      //set using setAttribute
+      div.setAttribute(
+        "style",
+        "background-color:red;border:1px solid black;height:100px;width:100px;"
+      );
+      //get using getAttribute
+      console.log(div.getAttribute("style"));
+      //remove
+      div.removeAttribute("style");
+    </script>
+  </body>
+</html>
