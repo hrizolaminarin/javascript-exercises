@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>A difference between textContent and innerText</title> 
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
-    <div id="example">
-        Hello <span style="display: none;">world</span>!
-    </div>
-      
+  <head>
+    <meta charset="UTF-8" />
+    <title>A difference between textContent and innerText</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div id="example">Hello <span style="display: none">world</span>!</div>
+
     <script>
-        let element = document.getElementById("example");
-      
-        // displays even hidden text
-        console.log(element.textContent); // Output: Hello world!
-        // considers style so doesn't show hidden text
-        console.log(element.innerText); // Output: Hello !
+      let element = document.getElementById("example");
+
+      // displays even hidden text
+      console.log(element.textContent); // Output: Hello world!
+      // considers style so doesn't show hidden text
+      console.log(element.innerText); // Output: Hello !
+
+      /* - innerText is aware of CSS. So if you have hidden text innerText 
+      ignores this text, whereas textContent will not
+- Because innerText cares about CSS it will trigger a reflow, whereas textContent will not
+- innerText ignores the Text nodes contained in <script> and <style> elements
+- innerText, unlike textContent will normalize the text that is returned. Just
+  think of textContent as returning exactly what is in the document with the
+  markup removed.
+  This will include white space, line breaks, and carriage returns
+- innerText is considered to be non-standard and browser specific while 
+textContent is implemented from the DOM specifications*/
     </script>
-    
-</body>
+  </body>
 </html>
