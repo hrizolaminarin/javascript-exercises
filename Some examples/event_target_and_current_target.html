@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div>click me</div>
+
+    <script>  
+
+      document.body.addEventListener(
+        "click",
+        function (event) {
+          //when the <div> is clicked logs '<div>' because the <div> was the
+          //target in the event flow
+          //event.target = where event originated ie. where we clicked  
+          console.log(event.target);
+          //event.currentTarget = to whom eventListener is attached to
+          console.log(event.currentTarget);
+          //this = to whom eventListener is attached to
+          console.log(this);
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
