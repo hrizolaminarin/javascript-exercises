@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <p>Click a table cell</p>
+
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>row 1 column 1</td>
+          <td>row 1 column 2</td>
+        </tr>
+        <tr>
+          <td>row 2 column 1</td>
+          <td>row 2 column 2</td>
+        </tr>
+        <tr>
+          <td>row 3 column 1</td>
+          <td>row 3 column 2</td>
+        </tr>
+        <tr>
+          <td>row 4 column 1</td>
+          <td>row 4 column 2</td>
+        </tr>
+        <tr>
+          <td>row 5 column 1</td>
+          <td>row 5 column 2</td>
+        </tr>
+        <tr>
+          <td>row 6 column 1</td>
+          <td>row 6 column 2</td>
+        </tr>
+      </tbody>
+    </table>
+    ​​​​​​​​
+
+    <script>
+      /*Using event delegation we can add a single event listener to the <table>
+node which acts as a delegate for the node or object that is the initial target 
+of the event. In the code example below, clicking any of the <td>'s (i.e. the 
+    target of the event) will delegate its event to the click listener on the 
+    <table>. Don't forget this is all made possible because of the event flow 
+    and in this specific case the bubbling phase.If we were to update the table 
+    in the code example with new rows, the new rows would responded to the click
+     event as soon as they were render to the screen because the click event is 
+     delegated to the <table> element node.
+
+Event delegation is ideally leverage when you are dealing with a click, 
+mousedown, mouseup, keydown, keyup, and keypress event type.*/
+
+      document.querySelector("table").addEventListener(
+        "click",
+        function (event) {
+          if (event.target.tagName.toLowerCase() === "td") {
+            //make sure we only run code if a td is the target
+            console.log(event.target.textContent); //use event.target to gain access to target of the event which is the td
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
