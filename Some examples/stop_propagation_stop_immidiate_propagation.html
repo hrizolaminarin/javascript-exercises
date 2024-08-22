@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div id="stopDiv">Click me to demonstrate stopPropagation()</div>
+    </div>
+    <div class="parent">
+      <div id="immidiateStopDiv">
+        Click me to demonstrate immidiateStopPropagation()
+      </div>
+    </div>
+    <script>
+      const stopDiv = document.querySelector("#stopDiv");
+
+      stopDiv.addEventListener(
+        "click",
+        function () {
+          console.log("I am first attached!");
+        },
+        false
+      );
+
+      stopDiv.addEventListener(
+        "click",
+        function (event) {
+          console.log(
+            "invoked all click events attached, but cancel capture and bubble event phases"
+          );
+          // STOP PROPAGATION !!!
+          event.stopPropagation();
+        },
+        false
+      );
+
+      stopDiv.addEventListener(
+        "click",
+        function () {
+          console.log("me too, but nothing from the event flow!");
+        },
+        false
+      );
+
+      /*when the <stopDiv> is clicked this event is not invoked because one of the events attached to the <stopDiv> stops the capture and bubble flow.*/
+      stopDiv.parentNode.addEventListener(
+        "click",
+        function () {
+          console.log("What, denied from being invoked!");
+        },
+        false
+      );
+
+      const immidiateStopDiv = document.querySelector("#immidiateStopDiv");
+
+      //first event attached
+      immidiateStopDiv.addEventListener(
+        "click",
+        function () {
+          console.log("I get invoked because I was attached first");
+        },
+        false
+      );
+
+      //seond event attached
+      immidiateStopDiv.addEventListener(
+        "click",
+        function (event) {
+          console.log(
+            "I get invoked, but stop any other click events on this target"
+          );
+          event.stopImmediatePropagation();
+        },
+        false
+      );
+
+      //third event attached, but because stopImmediatePropagation() was called above this event does not get invoked
+      immidiateStopDiv.addEventListener(
+        "click",
+        function () {
+          console.log("I get stopped from the previous click event listener");
+        },
+        false
+      );
+
+      //notice that the event flow is also cancelled as if stopPropagation was called too
+      immidiateStopDiv.parentNode.addEventListener(
+        "click",
+        function () {
+          console.log("What, denied from being invoked!");
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
