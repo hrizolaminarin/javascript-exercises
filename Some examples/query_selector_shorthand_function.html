@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="foo">
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <script>
+
+      // select a list of matching elements, context is optional
+      function $(selector, context) {
+        return (context || document).querySelectorAll(selector);
+      }
+
+      // select the first match only, context is optional
+      function $1(selector, context) {
+        return (context || document).querySelector(selector);
+      }
+
+      // how to use
+
+      // select all '.bar' elements inside all '.foo' containers
+      var matches = $(".foo .bar");
+
+      // matches is a NodeList
+      matches.forEach(element => {
+        element.style.backgroundColor = 'pink';
+      });
+
+      // context example - get first foo
+      var container = $1(".foo");
+      // select '.bar' elements inside this one container
+      var matches = $(".bar", container);
+      matches[0].style.backgroundColor = 'green';
+    </script>
+  </body>
+</html>
