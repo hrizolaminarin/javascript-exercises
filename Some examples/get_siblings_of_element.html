@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="foo">
+      <div id="id1" class="bar">A</div>
+      <div id="id2" class="bar">B</div>
+      <div id="id3" class="bar">C</div>
+      <div id="id4" class="bar">D</div>
+      <div id="id5" class="bar">E</div>
+    </div>
+
+    <script>
+        const child = document.querySelector('#id3');
+
+        // using firstElementChild instead of firstChild (which is a text)
+        // and nextElementSibling instead of nextSibling (which is a text)
+        function getAllSiblingsFirstVersion(el) {
+            let siblings = [];
+            el = el.parentNode.firstElementChild;
+           
+            do{
+                siblings.push(el);
+            } while (el = el.nextElementSibling);
+
+            return siblings;
+        }
+
+        console.log('getAllSiblingsFirstVersion');
+        console.log(getAllSiblingsFirstVersion(child));
+
+        // using firstChild/nextSibling and filter function to filter for
+        // desired siblings
+        function getAllSiblingsSecondVersion(el, filter) {
+            let siblings = [];
+            el = el.parentNode.firstChild;
+            do{ 
+                // if filter func exists and returns true
+                if(!filter || filter(el)) {
+                    siblings.push(el);
+                }
+            } while (el = el.nextSibling);
+
+            return siblings;
+        } 
+
+        function filterDivs(el) {
+            return el.nodeName.toLowerCase() == 'div'; 
+        }
+
+        console.log('getAllSiblingsSecondVersion');
+        console.log(getAllSiblingsSecondVersion(child, filterDivs));
+     
+    </script>
+  </body>
+</html>
