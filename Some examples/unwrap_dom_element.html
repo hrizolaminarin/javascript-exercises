@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Unwrap foo  div</title> 
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <style>
+      div {
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid black;
+        background-color:bisque;
+      }
+      .foo{
+        background-color: cadetblue;
+      }
+      button{
+        margin: 1rem;
+        padding: 1rem;
+        border: 4px solid bisque;
+        border-radius: 20px;
+        background-color: darkcyan;
+        color:aliceblue;
+        font-weight: bolder;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="foo">
+      <div id="id1" class="bar">A</div>
+      <div id="id2" class="bar">B</div>
+      <div id="id3" class="bar">C</div>
+      <div id="id4" class="bar">D</div>
+      <div id="id5" class="bar">E</div>
+    </div>
+
+    <button> Click to unwrap foo div</button>
+    <script>
+       const foo = document.querySelector('.foo');
+       const button = document.querySelector('button');
+       
+       function unwrap(el) {
+
+        console.log('unwrapFoo listener called');
+        
+        while(el.firstChild) {
+            el.parentNode.insertBefore(el.firstChild, el);
+        }
+       }
+
+       button.addEventListener('click', function unwrapFoo() { 
+        unwrap(foo);
+        button.removeEventListener('click', unwrapFoo);
+        button.textContent = 'Click to remove foo div colored cadetblue';
+        button.addEventListener('click', () => {
+            foo.parentNode.removeChild(foo);
+            button.parentNode.removeChild(button);
+        });
+    });
+     
+    </script>
+  </body>
+</html>
