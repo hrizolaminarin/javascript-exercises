@@ -58,6 +58,37 @@
 
         console.log('getAllSiblingsSecondVersion');
         console.log(getAllSiblingsSecondVersion(child, filterDivs));
+
+        // get previous siblings
+        function getPreviousSiblings(el, filter) {
+            let previousSiblings = [];
+            while(el = el.previousSibling) {
+                if (!filter || filter(el)) {
+                    previousSiblings.push(el);
+                }
+            }
+
+            return previousSiblings;
+        }
+
+        console.log('getPreviousSiblings');
+        console.log(getPreviousSiblings(child, filterDivs));
+
+
+        // get next siblings
+        function getNextSiblings(el, filter) {
+            let nextSiblings = [];
+            while(el = el.nextSibling) {
+                if (!filter || filter(el)) {
+                    nextSiblings.push(el);
+                }
+            }
+
+            return nextSiblings;
+        }
+
+        console.log('getNextSiblings');
+        console.log(getNextSiblings(child, filterDivs));
      
     </script>
   </body>
